@@ -16,3 +16,11 @@ $("input[type='text']").keypress(function(event) {
 		$("ul").append("<li><span><i class='fa fa-trash-o' aria-hidden='true'></i></span> " + text + "</li>");
 	}
 });
+
+function toggleInput() {
+	$(".fa-pencil-square-o").click(function() {
+	$("input[type='text']").fadeToggle(400);
+	});
+}
+$("input[type='text']").fadeOut();
+toggleInput();
