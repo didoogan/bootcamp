@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var Campground = require("./models/campground");
+var Comment = require("./models/comment");
 var seedDB = require("./seeds");
 
 
@@ -26,7 +27,7 @@ app.get("/campgrounds", function(req, res){
        if(err){
            console.log(err);
        } else {
-          res.render("index",{campgrounds:allCampgrounds});
+          res.render("campgrounds/index",{campgrounds:allCampgrounds});
        }
     });
 });   
@@ -51,20 +52,10 @@ app.post("/campgrounds", function(req, res){
 });
 
 app.get("/campgrounds/new", function(req, res) {
-    res.render("new");
+    res.render("campgrounds/new");
 });
 
-// // SHOW ROUTE
-// app.get("/campgrounds/:id", function(req, res) {
-//     Campground.findById(req.params.id).populate("comments").exec(function(err, foundCamp) {
-//         if(err) {
-//             console.log(err);
-//         } else {
-//             console.log(foundCamp);
-//             res.render("show", {camp: foundCamp});
-//         }
-//     });
-// });
+
 
 // SHOW - shows more info about one campground
 app.get("/campgrounds/:id", function(req, res){
@@ -75,15 +66,49 @@ app.get("/campgrounds/:id", function(req, res){
         } else {
             console.log(foundCampground)
             //render show template with that campground
-            res.render("show", {camp: foundCampground});
+            res.render("campgrounds/show", {camp: foundCampground});
         }
     });
 });
 
+//=================
+// COMMENTS ROUTES
+//=================
+
+
 //  NEW COMMENT ROUTE
 app.get("/campgrounds/:id/comments/new", function(req, res) {
-    res.send("New comment page");
+    Campground.findById(req.params.id, function(err, camp) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.render("comments/new", {camp: camp});
+        }
+    });
 })
+
+app.post("/campgrounds/:id/comments", function(req, res) {
+   // take Campground by id
+   Campground.findById(req.params.id, function(err, camp) {
+      if(err) {
+          res.redirect("/campgrounds");
+      } else {
+          // create new comment
+          Comment.create(req.body.comment, function(err, comment) {
+             if(err) {
+                 console.log(err);
+             } else {
+                // connect new comment to campground
+                camp.comments.push(comment);
+                camp.save();
+                // redirect to campground show page
+                res.redirect("/campgrounds/" + camp._id);
+             }
+          });
+
+      }
+   });
+});
 
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("The server run...");
