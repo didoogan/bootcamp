@@ -47,6 +47,7 @@ router.post("/", isLoggedIn, function(req, res) {
    });
 });
 
+// middleware
 function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()) {
         return next();
