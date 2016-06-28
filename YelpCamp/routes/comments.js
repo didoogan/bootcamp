@@ -18,7 +18,8 @@ router.get("/new", isLoggedIn, function(req, res) {
     });
 });
 
-router.post("/",isLoggedIn, function(req, res) {
+// CREATE COMMENT
+router.post("/", isLoggedIn, function(req, res) {
    // take Campground by id
    Campground.findById(req.params.id, function(err, camp) {
       if(err) {
@@ -29,6 +30,11 @@ router.post("/",isLoggedIn, function(req, res) {
              if(err) {
                  console.log(err);
              } else {
+                // add username and id to comment
+                comment.author.id = req.user._id;
+                comment.author.username = req.user.username;
+                // save comment
+                comment.save();
                 // connect new comment to campground
                 camp.comments.push(comment);
                 camp.save();
