@@ -20,6 +20,10 @@
                    <p>
                        <em>Создал: <%= camp.author.username %></em>
                    </p>
+                   <a class="btn btn-warning btn-xs" href="/campgrounds/<%= camp._id %>/edit">Изменить</a>
+                   <form action="/campgrounds/<%= camp._id %>?_method=DELETE" method="POST">
+                       <button class="btn btn-danger btn-xs">Удалить</button>
+                   </form>
                </div>     
             </div>
             <div class="well">
