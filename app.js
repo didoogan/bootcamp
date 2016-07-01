@@ -11,7 +11,8 @@ var methodOverride = require("method-override");
 
 
 // mongoose.connect("mongodb://localhost/yelp_camp");
-mongoose.connect("mongodb://doogan:ktrcec87@ds011705.mlab.com:11705/yelpcamp");
+// mongoose.connect("mongodb://doogan:ktrcec87@ds011705.mlab.com:11705/yelpcamp");
+mongoose.connect(process.env.DATABASEURL);
 
 // mongodb://<dbuser>:<dbpassword>@ds011705.mlab.com:11705/yelpcamp
 
