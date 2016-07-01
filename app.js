@@ -9,12 +9,9 @@ var LocalStrategy = require("passport-local");
 var seedDB = require("./seeds");
 var methodOverride = require("method-override");
 
-
-// mongoose.connect("mongodb://localhost/yelp_camp");
-// mongoose.connect("mongodb://doogan:ktrcec87@ds011705.mlab.com:11705/yelpcamp");
-mongoose.connect(process.env.DATABASEURL);
-
-// mongodb://<dbuser>:<dbpassword>@ds011705.mlab.com:11705/yelpcamp
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
+mongoose.connect(url);
+// https://true-chesterfield-86672.herokuapp.com/campgrounds
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
