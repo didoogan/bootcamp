@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Form</title>
+</head>
+<body>
+<h2>Register</h2>
+
+<form>
+	<p>
+	<label for="name">First Name:</label>
+	<input type="text" name="name" id="name" placeholder="John" ="">
+	<label for="last_name">Last Name:</label>
+	<input type="text" name="last_name" id="last_name" placeholder="Smith" ="">
+	</p>
+
+	<p>
+	<label for="male">Male</label>
+	<input type="radio" name="gender" id="male" value="male">
+	<label for="female">Female</label>
+	<input type="radio" name="gender" id="female" value="female">
+	<label for="other">Other</label>
+	<input type="radio" name="gender" id="other" value="other">	
+	</p>
+
+	<p>
+	<label for="email">Email:</label>	
+	<input type="email" id="email" name="email" placeholder="your email" ="">
+	<label for="password"Password:></label>	
+	<input type="password" id="password" name="password" pattern=".{5,10}" required title="от 5 до 10 символов">
+	</p>
+
+	<p>Birthday:
+	<select name="month" id="month">month
+	<option>Month</option>
+	<option>-----</option>
+	<option>may</option>
+	<option>june</option>
+	<option>july</option>
+	</select>
+
+	<select name="day"  >
+	<option>Day</option>
+	<option>-----</option>
+	<option>mondey</option>
+	<option>thersday</option>
+	<option>friday</option>
+	</select>	
+
+	<select name="year" name="Year"  >
+	<option>Year</option>
+	<option>-----</option>
+	<option>2001</option>
+	<option>2008</option>
+	<option>2012</option>
+	</select>		
+	</p>
+
+	<p>
+	<label for="checkbox">I agree to the terms and conditiond</label>
+	<input type="checkbox" name="checkbox" id="checkbox">	
+	</p>
+
+	<button>Submit</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+i.icon {
+    font-size: 2em;
+    color: rgba(0, 121, 255, 0.39);
+}
+
+.container.main {
+    margin-top: 7.0em;
+}
+
+
+#delete {
+    display: inline;
+}

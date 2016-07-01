@@ -1,0 +1,14 @@
+{
+  "name": "app.js",
+  "version": "1.0.0",
+  "description": "My first Express aplication",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dima Timoshenko",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}

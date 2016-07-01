@@ -1,0 +1,26 @@
+$("ul").on("click","li", function() {
+	$(this).toggleClass("done");
+});
+
+$("ul").on("click", "span", function(event) {
+	$(this).parent().fadeOut(500, function() {
+		$(this).remove();
+	});
+	event.stopPropagation();
+});
+
+$("input[type='text']").keypress(function(event) {
+	if(event.which === 13) {
+		var text = $(this).val();
+		$(this).val("");
+		$("ul").append("<li><span><i class='fa fa-trash-o' aria-hidden='true'></i></span> " + text + "</li>");
+	}
+});
+
+function toggleInput() {
+	$(".fa-pencil-square-o").click(function() {
+	$("input[type='text']").fadeToggle(400);
+	});
+}
+$("input[type='text']").fadeOut();
+toggleInput();
