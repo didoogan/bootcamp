@@ -10,7 +10,10 @@ var seedDB = require("./seeds");
 var methodOverride = require("method-override");
 
 
-mongoose.connect("mongodb://localhost/yelp_camp");
+// mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect("mongodb://doogan:ktrcec87@ds011705.mlab.com:11705/yelpcamp");
+
+// mongodb://<dbuser>:<dbpassword>@ds011705.mlab.com:11705/yelpcamp
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
